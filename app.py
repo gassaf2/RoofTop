@@ -11,7 +11,8 @@ import streamlit as st
 import tensorflow as tf
 from keras.models import load_model
        
-
+st.image("img_media/small_ai_img.jpg",use_column_width=True)
+     
 # st.header('Roof Top Detection', divider='blue',help='This is an application where user can drop an image and the system will detect the roof top  using deep learning model')
 st.header('Deep Learning application')
 
@@ -37,6 +38,10 @@ with st.sidebar:
     
     st.markdown("**Parameters of selected model:**")
     st.write(dict_model[option],unsafe_allow_html=True)
+    st.write("<br><br><br><br><br><br><br><br><br><br><br><br><br>",unsafe_allow_html=True)
+    col1,col2=st.columns(2)
+    
+    col2.image("img_media/slb_logo.png")
   
 var2=0
 
@@ -200,10 +205,9 @@ def test(arg1):
 
 
 
-st.image("ai-article-pic8.jpeg",use_column_width ="auto")
-     
- 
-st.markdown(var2, unsafe_allow_html=False, help=None,)
+
+
+    
 # Coordinates for a location (e.g., San Francisco, CA)
 
 

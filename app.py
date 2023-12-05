@@ -6,7 +6,7 @@ from PIL import Image,ImageDraw
 from io import StringIO
 import streamlit as st
 #import folium
-from streamlit_folium import folium_static
+#from streamlit_folium import folium_static
 import cv2
 import tensorflow as tf
 from keras.models import load_model

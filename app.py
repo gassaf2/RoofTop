@@ -5,7 +5,7 @@ import os
 from PIL import Image,ImageDraw
 from io import StringIO
 import streamlit as st
-import folium
+#import folium
 from streamlit_folium import folium_static
 import cv2
 import tensorflow as tf
@@ -129,8 +129,6 @@ if len(uploaded_files) >0 :
        # st.write("Displaying DataFrame:")
        # st.write(df)
        
-        
-        
         col1,col2=st.columns(2)
         col1.header("Original Image")
         col2.header("Predicted Image")
@@ -179,14 +177,14 @@ st.markdown(var2, unsafe_allow_html=False, help=None,)
 # Coordinates for a location (e.g., San Francisco, CA)
 location = (34.303764, 35.842226)
 
-    # Create a Folium Map centered at the specified location
-my_map = folium.Map(location=location, zoom_start=12)
+#     # Create a Folium Map centered at the specified location
+# my_map = folium.Map(location=location, zoom_start=12)
 
-    # Add a marker to the map
-folium.Marker(location=location, popup="Marker Popup").add_to(my_map)
+#     # Add a marker to the map
+# folium.Marker(location=location, popup="Marker Popup").add_to(my_map)
 
-    # Display the Folium Map in Streamlit
-folium_static(my_map)
+#     # Display the Folium Map in Streamlit
+# folium_static(my_map)
 
 
 uploaded_files = st.file_uploader("Upload your files here...", accept_multiple_files=True)

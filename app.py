@@ -19,8 +19,25 @@ st.caption(' Introduction: The usage of this application is free of cost')
 
 # Definition of global variables - GA
 
+with st.sidebar:
+    
+    model1="model1.h5"
+    model2="model2.h5"
+    model3="model3.h5"
+    
+    dict_model={
+        model1:"Model trained for 30 epochs<br>Accuracy: 0.7<br>Loss: 0.2<br>",
+        model2:"Accuracy: 0.8<br>Loss: 0.3",
+        model3:"Accuracy: 0.95<br>Loss:0.1"
+    }
+    option = st.selectbox(
+    '**Select a model**',
+    (model1, model2,model3))
 
-
+    
+    st.markdown("**Parameters of selected model:**")
+    st.write(dict_model[option],unsafe_allow_html=True)
+  
 var2=0
 
 transparent_image0 = Image.new("RGBA",(250, 250), (0,0, 0, 0))
@@ -133,6 +150,8 @@ nbr_images=len(uploaded_files)
 
 
 st.markdown(f"Nbr of Images uploaded is: {nbr_images}")
+
+
 if len(uploaded_files) >0 :    
     #print("Uploaded File:", type(uploaded_files))
     num_rows=nbr_images
@@ -181,7 +200,7 @@ def test(arg1):
 
 
 
-
+st.image("ai-article-pic8.jpeg",use_column_width ="auto")
      
  
 st.markdown(var2, unsafe_allow_html=False, help=None,)

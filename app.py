@@ -66,6 +66,7 @@ def preprocessing(solar_path):
     #solar_img=tf.reshape(solar_img, (250,250,3))
     return solar_img
 
+
 def create_dataset(df, train = False):
     if not train:
         ds = tf.data.Dataset.from_tensor_slices((df["File_Name"].values))

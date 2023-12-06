@@ -189,16 +189,16 @@ if len(uploaded_files) >0 :
         if button:
             test_df=load_images(uploaded_files)
             
-            st.write(test_df)
+            #st.write(test_df)
             test_dataset = create_dataset(test_df)
             test_dataset=test_dataset.batch(num_rows)
-            st.write(test_dataset)
+            #st.write(test_dataset)
             
             model = load_model(model1) 
             
             img_pred=pred(model, test_dataset, 0.5, num_rows) 
             
-            st.write("Shape of img_prod",img_pred.shape)
+            #st.write("Shape of img_prod",img_pred.shape)
            # convert_numpy_to_img("pred_imgs",img_pred)
             
             plot_predicted(img_pred)

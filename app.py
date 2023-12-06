@@ -5,6 +5,7 @@ import os
 from PIL import Image,ImageDraw
 from io import StringIO
 import streamlit as st
+import matplotlib.pyplot as plt
 #import folium
 #from streamlit_folium import folium_static
 #import cv2
@@ -22,14 +23,14 @@ st.caption(' Introduction: The usage of this application is free of cost')
 
 with st.sidebar:
     
-    model1="model1.h5"
-    model2="model2.h5"
-    model3="model3.h5"
+    model1="Model_1.h5" #Mobile Vnet 81 epochs
+    model2="Model_2.h5"
+    model3="Model_3.h5" #small model unet with full dataset
     
     dict_model={
-        model1:"Model trained for 30 epochs<br>Accuracy: 0.7<br>Loss: 0.2<br>",
+        model1:"Model trained using transfer learning  from MobileVnet-V2.<br>Nbr of trained parameters: 3.2M <br> Nbr of retrained epochs: 80<br>Model accuracy: 0.96<br>Model loss: 0.09<br>",
         model2:"Accuracy: 0.8<br>Loss: 0.3",
-        model3:"Accuracy: 0.95<br>Loss:0.1"
+        model3:"Nbr of epochs:30 <br>Nbr of trained parameters: 102K <br> Accuracy: 0.81<br>Loss: 0.25"
     }
     option = st.selectbox(
     '**Select a model**',
@@ -38,11 +39,13 @@ with st.sidebar:
     
     st.markdown("**Parameters of selected model:**")
     st.write(dict_model[option],unsafe_allow_html=True)
-    st.write("<br><br><br><br><br><br><br><br><br><br><br><br><br>",unsafe_allow_html=True)
+    st.write("<br><br><br><br>",unsafe_allow_html=True)
+ 
+    st.image('img_media/groupphoto.jpg')
     col1,col2=st.columns(2)
     
+ 
     col2.image("img_media/slb_logo.png")
-  
 var2=0
 
 transparent_image0 = Image.new("RGBA",(250, 250), (0,0, 0, 0))
@@ -189,7 +192,7 @@ if len(uploaded_files) >0 :
             test_dataset=test_dataset.batch(num_rows)
             st.write(test_dataset)
             
-            model = load_model('model_streamlit.h5') 
+            model = load_model(model1) 
             
             img_pred=pred(model, test_dataset, 0.5, num_rows) 
             
@@ -202,7 +205,7 @@ def test(arg1):
     return arg1
 
 
-
+st.image("img_media/rectblue.png",use_column_width=True)
 
 
 

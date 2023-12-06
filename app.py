@@ -12,12 +12,13 @@ import streamlit as st
 import tensorflow as tf
 from keras.models import load_model
        
+st.header('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :blue[Rooftop Detection ]')
+       
 st.image("img_media/small_ai_img.jpg",use_column_width=True)
      
 # st.header('Roof Top Detection', divider='blue',help='This is an application where user can drop an image and the system will detect the roof top  using deep learning model')
-st.header('Deep Learning application')
 
-st.caption(' Introduction: The usage of this application is free of cost')
+st.caption(' Rooftop detection is a critical task with applications in urban planning, disaster response and solar panel installation. Traditional methods for identifying rooftops often struggle with the complexity of urban landscapes, varying roof shapes, and environmental factors. Machine learning, particularly convolutional neural networks (CNNs), has emerged as a powerful solution for automating rooftop detection tasks.')
 
 # Definition of global variables - GA
 
@@ -45,7 +46,7 @@ with st.sidebar:
     col1,col2=st.columns(2)
     
  
-    col2.image("img_media/slb_logo.png")
+    #col2.image("img_media/slb_logo.png")
 var2=0
 
 transparent_image0 = Image.new("RGBA",(250, 250), (0,0, 0, 0))
@@ -152,7 +153,8 @@ def convert_numpy_to_img(output_directory,array_img_list):
 #core code
 
 list_images_path=[]
-uploaded_files=st.file_uploader("Choose a image file" , accept_multiple_files=True,type=("jpg","png"))
+st.markdown("<br>",unsafe_allow_html=True)
+uploaded_files=st.file_uploader(" User can drag & drop one/multiple images" , accept_multiple_files=True,type=("jpg","png"))
 #if uploaded_files is not None:
 nbr_images=len(uploaded_files)
 
@@ -205,6 +207,13 @@ def test(arg1):
     return arg1
 
 
+
+st.markdown("<br><br>",unsafe_allow_html=True)
+
+
+
+col1,col2,col3,col4,col5,col6,col7,col8=st.columns(8)
+col8.image("img_media/slb_logo_cropped.PNG",use_column_width=True, )
 st.image("img_media/rectblue.png",use_column_width=True)
 
 

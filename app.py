@@ -25,17 +25,17 @@ st.caption(' Rooftop detection is a critical task with applications in urban pla
 with st.sidebar:
     
     model1="Model_1.h5" #Mobile Vnet 81 epochs
-    model2="Model_2.h5"
-    model3="Model_3.h5" #small model unet with full dataset
+    #model2="Model_2.h5"
+    model2="Model_2.h5" #small model unet with full dataset
     
     dict_model={
         model1:"Model trained using transfer learning  from MobileVnet-V2.<br>Nbr of trained parameters: 3.2M <br> Nbr of retrained epochs: 80<br>Model accuracy: 0.96<br>Model loss: 0.09<br>",
-        model2:"Accuracy: 0.8<br>Loss: 0.3",
-        model3:"Nbr of epochs:30 <br>Nbr of trained parameters: 102K <br> Accuracy: 0.81<br>Loss: 0.25"
+        #model2:"Accuracy: 0.8<br>Loss: 0.3",
+        model2:"Nbr of epochs:30 <br>Nbr of trained parameters: 102K <br> Accuracy: 0.81<br>Loss: 0.25"
     }
     option = st.selectbox(
     '**Select a model**',
-    (model1, model2,model3))
+    (model1, model2))
 
     
     st.markdown("**Parameters of selected model:**")

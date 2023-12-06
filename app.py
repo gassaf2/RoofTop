@@ -5,7 +5,7 @@ import os
 from PIL import Image,ImageDraw
 from io import StringIO
 import streamlit as st
-import matplotlib.pyplot as plt
+
 #import folium
 #from streamlit_folium import folium_static
 #import cv2

@@ -61,7 +61,7 @@ def test(arg1):
     return arg1
 
 def plot_predicted(img_pred):
-    st.write("image is predicted")
+    st.header("Predictions of Image(s) are completed")
     img_pred=np.squeeze(img_pred, axis=0)
     for index in range(img_pred.shape[0]):
         img=img_pred[index,:,:]

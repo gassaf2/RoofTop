@@ -5,7 +5,7 @@ import os
 from PIL import Image,ImageDraw
 from io import StringIO
 import streamlit as st
-
+import time
 #import folium
 #from streamlit_folium import folium_static
 #import cv2
@@ -21,6 +21,8 @@ st.image("img_media/small_ai_img.jpg",use_column_width=True)
 st.caption(' Rooftop detection is a critical task with applications in urban planning, disaster response and solar panel installation. Traditional methods for identifying rooftops often struggle with the complexity of urban landscapes, varying roof shapes, and environmental factors. Machine learning, particularly convolutional neural networks (CNNs), has emerged as a powerful solution for automating rooftop detection tasks.')
 
 # Definition of global variables - GA
+progress_perc=0
+progress_msg=""
 
 with st.sidebar:
     
@@ -63,6 +65,7 @@ def test(arg1):
 def plot_predicted(img_pred):
     st.header("Predictions of Image(s) are completed")
     img_pred=np.squeeze(img_pred, axis=0)
+    
     for index in range(img_pred.shape[0]):
         img=img_pred[index,:,:]
         #transparent_image=f"result_streamlit/pred0.png"    
@@ -120,9 +123,19 @@ def create_dataset(df, train = False):
 def pred(model, dataset, threshold, num=1):
     # store the predicted values in a temporary dataset
     img_pred=[]
+    count=1
     for img in dataset.take(num):
+        # print(count)
+        # print(nbr_images)
+        # print("num",num)
+        # progress_perc=(100*count/nbr_images )
+        # time.sleep(0.01)
+        # my_bar.progress(progress_perc)
+        # st.write(progress_perc)
+        # print(progress_perc)
+        # count=count+1
         img_pred.append(model.predict(img))
-        
+     
     # Mask the predicted output
     temp=img_pred
     temp = np.array(temp)
@@ -150,10 +163,19 @@ def convert_numpy_to_img(output_directory,array_img_list):
         
         image_pil.save(image_filename)
 
+def update_progress_perc(val):
+    progress_perc=val
+    
+
+def update_progress_msg(st):
+    progress_msg=st    
+    
 #core code
 
 list_images_path=[]
 st.markdown("<br>",unsafe_allow_html=True)
+
+my_bar=st.progress(progress_perc,progress_msg)
 uploaded_files=st.file_uploader(" User can drag & drop one/multiple images" , accept_multiple_files=True,type=("jpg","png"))
 #if uploaded_files is not None:
 nbr_images=len(uploaded_files)
@@ -184,24 +206,24 @@ if len(uploaded_files) >0 :
             
             image=Image.open(uploaded_files[row])
             col1.image(image,caption=f"Image {row} - {uploaded_files[row].name}")
-        button=st.button("Predict",type="primary", on_click=on_button_predict)
+       # button=st.button("Predict",type="primary", on_click=on_button_predict)
     
-        if button:
-            test_df=load_images(uploaded_files)
+      #  if button:
+        test_df=load_images(uploaded_files)
             
             #st.write(test_df)
-            test_dataset = create_dataset(test_df)
-            test_dataset=test_dataset.batch(num_rows)
+        test_dataset = create_dataset(test_df)
+        test_dataset=test_dataset.batch(num_rows)
             #st.write(test_dataset)
             
-            model = load_model(model1) 
-            
-            img_pred=pred(model, test_dataset, 0.5, num_rows) 
-            
+        model = load_model(model1) 
+        my_bar.progress(25)    
+        img_pred=pred(model, test_dataset, 0.5, num_rows) 
+        my_bar.progress(100)       
             #st.write("Shape of img_prod",img_pred.shape)
            # convert_numpy_to_img("pred_imgs",img_pred)
             
-            plot_predicted(img_pred)
+        plot_predicted(img_pred)
            
 def test(arg1):
     return arg1

@@ -90,7 +90,7 @@ def load_images(file_list):
     #create a dataframe   
     df = pd.DataFrame(data)
         # Display DataFrame using st.write
-    st.write("Using st.write:")
+    #st.write("Using st.write:")
     #st.write(df)
     return df  
 

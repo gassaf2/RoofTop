@@ -53,7 +53,7 @@ transparent_image0 = Image.new("RGBA",(250, 250), (0,0, 0, 0))
 transparent_image1 = Image.new("RGBA",(250, 250), (0,0, 0, 0))
 # Definition of python definition
 def on_button_predict():
-    st.write("Button clicked!")
+    st.write("")
 
 img_size=(250,250)
 

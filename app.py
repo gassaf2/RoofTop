@@ -217,9 +217,9 @@ if len(uploaded_files) >0 :
             #st.write(test_dataset)
             
         model = load_model(model1) 
-        my_bar.progress(25)    
+        my_bar.progress(25,"Prediction is going on...")    
         img_pred=pred(model, test_dataset, 0.5, num_rows) 
-        my_bar.progress(100)       
+        my_bar.progress(100, "Prediction is completed")       
             #st.write("Shape of img_prod",img_pred.shape)
            # convert_numpy_to_img("pred_imgs",img_pred)
             

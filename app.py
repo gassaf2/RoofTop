@@ -91,7 +91,7 @@ def load_images(file_list):
     df = pd.DataFrame(data)
         # Display DataFrame using st.write
     st.write("Using st.write:")
-    st.write(df)
+    #st.write(df)
     return df  
 
 img_size=(250,250)

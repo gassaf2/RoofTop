@@ -1,3 +1,4 @@
+#Feb12
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -18,7 +19,7 @@ st.image("img_media/small_ai_img.jpg",use_column_width=True)
      
 # st.header('Roof Top Detection', divider='blue',help='This is an application where user can drop an image and the system will detect the roof top  using deep learning model')
 
-st.caption(' Rooftop detection is a critical task with applications in urban planning, disaster response and solar panel installation. Traditional methods for identifying rooftops often struggle with the complexity of urban landscapes, varying roof shapes, and environmental factors. Machine learning, particularly convolutional neural networks (CNNs), has emerged as a powerful solution for automating rooftop detection tasks.')
+st.caption(' 1Rooftop detection is a critical task with applications in urban planning, disaster response and solar panel installation. Traditional methods for identifying rooftops often struggle with the complexity of urban landscapes, varying roof shapes, and environmental factors. Machine learning, particularly convolutional neural networks (CNNs), has emerged as a powerful solution for automating rooftop detection tasks.')
 
 # Definition of global variables - GA
 progress_perc=0
